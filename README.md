@@ -1,6 +1,3 @@
-# PollZen Repository README.md
-
-````md
 # PollZen
 
 > Realtime polling and feedback SaaS platform with live analytics, public sharing, anonymous/authenticated responses, and realtime updates using Socket.io.
@@ -32,13 +29,11 @@ The project is designed with:
 ```bash
 pollzen/
 │
-├── client/     # Frontend (React + Vite)
-├── server/     # Backend (Node.js + Express)
+├── pollzen-frontend/   # Frontend (React + Vite)
+├── server/             # Backend (Node.js + Express)
 │
 ├── README.md
 ````
-
----
 
 # Tech Stack
 
