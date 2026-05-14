@@ -1,0 +1,15 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: pollzen-db
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: pollzen # Create this database on first run
+    volumes:
+      - mongodb_data:/data/db   
+
+
+volumes:
+  mongodb_data:
+    driver: local   
