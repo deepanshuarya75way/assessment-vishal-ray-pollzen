@@ -18,16 +18,16 @@ export default function createApp() {
      app.use(cors());
      app.use(express.json({ limit: "16kb" }));
      app.use(express.urlencoded({ extended: true }));
-     app.use(limiter); 
+   //  app.use(limiter); 
 
      
 
      // Routes Register
      app.use('/api/v1/health', healthRouter)
      app.use('/api/v1/auth', authRouter);
-     app.use('/api/v1/poll', pollRouter);
-     app.use('/api/v1/response', responseRouter)
-     app.use('/api/v1/analytic', analyticRouter)
+     app.use('/api/v1/polls', pollRouter);
+     app.use('/api/v1/responses', responseRouter)
+     app.use('/api/v1/analytics', analyticRouter)
 
      // Error Handling
      app.use(notFound);

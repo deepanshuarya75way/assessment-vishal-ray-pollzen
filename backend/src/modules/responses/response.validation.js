@@ -11,6 +11,6 @@ export const submitResponseSchema = z.object({
                     optionId: z.string().length(24, "Invalid Option ID")
                })
           ).min(1, "You must answer at least one question"),
-          anonymousId: z.string().optional() 
+          anonymousId: z.string().nullable()
      }),
 });
