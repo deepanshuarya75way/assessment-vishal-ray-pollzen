@@ -1,15 +1,6 @@
-import {
-     ResponsiveContainer,
-     BarChart,
-     Bar,
-     XAxis,
-     YAxis,
-     Tooltip,
-} from "recharts";
+import { ResponsiveContainer, BarChart, Bar,XAxis, YAxis, Tooltip,} from "recharts";
 
-export default function PollBarChart({
-     data,
-}) {
+export default function PollBarChart({data}) {
      return (
           <div className="h-80">
                <ResponsiveContainer

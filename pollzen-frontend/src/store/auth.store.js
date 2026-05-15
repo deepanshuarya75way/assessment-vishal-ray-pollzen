@@ -1,19 +1,19 @@
 import { create } from "zustand";
 
+// auth store
 export const useAuthStore = create((set) => ({
      user: null,
-
      token: localStorage.getItem("token") || null,
-
      isAuthenticated: false,
-
      isLoading: false,
 
+     // set loading
      setLoading: (value) =>
           set({
                isLoading: value,
           }),
 
+     // set into local storage
      setAuth: ({ user, token }) => {
           localStorage.setItem("token", token);
 
@@ -24,6 +24,7 @@ export const useAuthStore = create((set) => ({
           });
      },
 
+     // logout
      logout: () => {
           localStorage.removeItem("token");
 
@@ -34,6 +35,7 @@ export const useAuthStore = create((set) => ({
           });
      },
 
+     // set user
      setUser: (user) =>
           set({
                user,

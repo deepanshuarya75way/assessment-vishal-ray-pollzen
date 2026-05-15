@@ -1,9 +1,4 @@
-import {
-     LayoutDashboard,
-     BarChart3,
-     PlusSquare,
-     Vote,
-} from "lucide-react";
+import { LayoutDashboard, BarChart3, PlusSquare, Vote} from "lucide-react";
 
 export const dashboardNavigation = [
      {

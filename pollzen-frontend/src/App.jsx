@@ -7,5 +7,6 @@ import useAuthInit from "./hooks/useAuthInit";
 export default function App() {
   useAuthInit();
 
+  // wrap into router
   return <RouterProvider router={router} />;
 }

@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+// Response schema
 export const responseSchema = z.object({
      answers: z
           .array(

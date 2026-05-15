@@ -1,51 +1,26 @@
-import {
-     MoreVertical,
-     BarChart3,
-     Trash2,
-     Send,
-     Lock,
-} from "lucide-react";
+import { MoreVertical, BarChart3, Trash2, Send, Lock,} from "lucide-react";
 
 import { Link } from "react-router-dom";
-
 import { toast } from "sonner";
 
-import {
-     publishPoll,
-     closePoll,
-     deletePoll,
-} from "@/services/poll.service";
-
+import { publishPoll,closePoll,deletePoll} from "@/services/poll.service";
 import PollStatusBadge from "./PollStatusBadge";
 
 import { Card, CardContent } from "@/components/ui/card";
-
 import { Button } from "@/components/ui/button";
 
-import {
-     DropdownMenu,
-     DropdownMenuContent,
-     DropdownMenuItem,
-     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
 
-export default function PollCard({
-     poll,
-     refetchPolls,
-}) {
+export default function PollCard({poll, refetchPolls}) {
      const handlePublish = async () => {
           try {
                await publishPoll(poll._id);
 
-               toast.success(
-                    "Poll published"
-               );
+               toast.success("Poll published");
 
                refetchPolls();
           } catch {
-               toast.error(
-                    "Failed to publish poll"
-               );
+               toast.error( "Failed to publish poll" );
           }
      };
 
@@ -53,15 +28,11 @@ export default function PollCard({
           try {
                await closePoll(poll._id);
 
-               toast.success(
-                    "Poll closed"
-               );
+               toast.success( "Poll closed" );
 
                refetchPolls();
           } catch {
-               toast.error(
-                    "Failed to close poll"
-               );
+               toast.error("Failed to close poll" );
           }
      };
 
@@ -69,15 +40,11 @@ export default function PollCard({
           try {
                await deletePoll(poll._id);
 
-               toast.success(
-                    "Poll deleted"
-               );
+               toast.success("Poll deleted" );
 
                refetchPolls();
           } catch {
-               toast.error(
-                    "Failed to delete poll"
-               );
+               toast.error( "Failed to delete poll" );
           }
      };
 

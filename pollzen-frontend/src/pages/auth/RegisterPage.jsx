@@ -1,21 +1,14 @@
 import { useState } from "react";
-
 import { Link, useNavigate } from "react-router-dom";
-
 import { useForm } from "react-hook-form";
-
-import { zodResolver } from "@hookform/resolvers/zod";
-
 import { toast } from "sonner";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "@/validations/auth.schema";
-
 import { registerUser } from "@/services/auth.service";
 
 import { Button } from "@/components/ui/button";
-
 import { Card, CardContent } from "@/components/ui/card";
-
 import { Input } from "@/components/ui/input";
 
 export default function RegisterPage() {
@@ -23,18 +16,10 @@ export default function RegisterPage() {
 
      const [loading, setLoading] = useState(false);
 
-     const {
-          register,
-          handleSubmit,
-          formState: { errors },
-     } = useForm({
+     const {register, handleSubmit, formState: { errors } } = useForm({
           resolver: zodResolver(registerSchema),
 
-          defaultValues: {
-               name: "",
-               email: "",
-               password: "",
-          },
+          defaultValues: { name: "", email: "", password: ""  },
      });
 
      const onSubmit = async (values) => {
@@ -43,9 +28,7 @@ export default function RegisterPage() {
 
                await registerUser(values);
 
-               toast.success(
-                    "Account created successfully"
-               );
+               toast.success( "Account created successfully" );
 
                navigate("/login");
           } catch (error) {

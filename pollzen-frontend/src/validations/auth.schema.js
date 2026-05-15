@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+// login schema
 export const loginSchema = z.object({
      email: z
           .string()
@@ -10,6 +11,7 @@ export const loginSchema = z.object({
           .min(6, "Password must be at least 6 characters"),
 });
 
+// regsiter schema
 export const registerSchema = z.object({
      name: z
           .string()

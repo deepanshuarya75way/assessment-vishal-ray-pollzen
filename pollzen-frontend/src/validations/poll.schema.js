@@ -1,11 +1,13 @@
 import { z } from "zod";
 
+// Option schema
 const optionSchema = z.object({
      text: z
           .string()
           .min(1, "Option text is required"),
 });
 
+// question schema
 const questionSchema = z.object({
      questionText: z
           .string()
@@ -18,6 +20,7 @@ const questionSchema = z.object({
           .min(2, "At least 2 options required"),
 });
 
+// create poll schema
 export const createPollSchema = z.object({
      title: z
           .string()

@@ -1,10 +1,6 @@
-import {
-     Bell,
-     Search,
-} from "lucide-react";
+import { Bell, Search } from "lucide-react"
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-
 import { Input } from "@/components/ui/input";
 
 export default function AppNavbar() {

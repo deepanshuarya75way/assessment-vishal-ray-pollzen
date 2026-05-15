@@ -1,29 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import DashboardLayout from "@/components/layout/DashboardLayout";
-
 import AuthLayout from "@/components/layout/AuthLayout";
-
 import ProtectedRoute from "@/components/common/ProtectedRoute";
 
 import DashboardPage from "@/pages/dashboard/DashboardPage";
-
 import MyPollsPage from "@/pages/polls/MyPollsPage";
-
 import CreatePollPage from "@/pages/polls/CreatePollPage";
-
 import PollDetailsPage from "@/pages/polls/PollDetailsPage";
-
 import AnalyticsPage from "@/pages/analytics/AnalyticsPage";
 
 import PublicPollPage from "@/pages/public/PublicPollPage";
-
 import PublicResultsPage from "@/pages/public/PublicResultsPage";
-
 import LandingPage from "@/pages/public/LandingPage";
 
 import LoginPage from "@/pages/auth/LoginPage";
-
 import RegisterPage from "@/pages/auth/RegisterPage";
 
 const router = createBrowserRouter([
@@ -40,7 +31,6 @@ const router = createBrowserRouter([
                     path: "/login",
                     element: <LoginPage />,
                },
-
                {
                     path: "/register",
                     element: <RegisterPage />,

@@ -1,16 +1,8 @@
 import { Link } from "react-router-dom";
 
-import {
-     Vote,
-     BarChart3,
-     PlusSquare,
-     Activity,
-} from "lucide-react";
-
+import {Vote,  BarChart3, PlusSquare,Activity,} from "lucide-react";
 import { motion } from "framer-motion";
-
 import { Button } from "@/components/ui/button";
-
 import { Card, CardContent } from "@/components/ui/card";
 
 const stats = [
@@ -19,13 +11,11 @@ const stats = [
           value: "12",
           icon: Vote,
      },
-
      {
           title: "Total Responses",
           value: "1,284",
           icon: BarChart3,
      },
-
      {
           title: "Active Polls",
           value: "5",
@@ -40,14 +30,12 @@ const recentPolls = [
           responses: 240,
           status: "active",
      },
-
      {
           id: 2,
           title: "Remote Work Feedback",
           responses: 180,
           status: "published",
      },
-
      {
           id: 3,
           title: "Hackathon Participation Poll",

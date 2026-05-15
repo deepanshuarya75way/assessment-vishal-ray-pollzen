@@ -1,23 +1,19 @@
 import { useEffect, useState } from "react";
 
 import { getMyPolls } from "@/services/poll.service";
-
 import PollCard from "@/components/common/PollCard";
-
 import PollCardSkeleton from "@/components/common/PollCardSkeleton";
 
 export default function MyPollsPage() {
      const [polls, setPolls] = useState([]);
 
-     const [loading, setLoading] =
-          useState(true);
+     const [loading, setLoading] = useState(true);
 
      const fetchPolls = async () => {
           try {
                setLoading(true);
 
-               const response =
-                    await getMyPolls();
+               const response =await getMyPolls();
 
                setPolls(response.data || []);
           } catch (error) {

@@ -1,35 +1,19 @@
 import { useFieldArray } from "react-hook-form";
 
-import {
-     Plus,
-     Trash2,
-} from "lucide-react";
+import { Plus, Trash2,} from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
-
 import { Input } from "@/components/ui/input";
-
 import { Button } from "@/components/ui/button";
-
 import { Switch } from "@/components/ui/switch";
 
 import OptionInput from "./OptionInput";
 
-export default function QuestionCard({
-     control,
-     register,
-     questionIndex,
-     removeQuestion,
-}) {
+export default function QuestionCard({control, register, questionIndex, removeQuestion,}) {
      const {
           fields: optionFields,
-
           append: appendOption,
-
-          remove: removeOption,
-     } = useFieldArray({
-          control,
-
+          remove: removeOption } = useFieldArray({ control,
           name: `questions.${questionIndex}.options`,
      });
 

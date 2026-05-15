@@ -1,44 +1,25 @@
-import {
-     useEffect,
-     useState,
-     useCallback,
-} from "react";
-
+import {useEffect,useState,useCallback,} from "react";
 import { useParams } from "react-router-dom";
-
-import {
-     Vote,
-     Activity,
-} from "lucide-react";
+import { Vote, Activity } from "lucide-react";
 
 import { getPollAnalytics } from "@/services/analytics.service";
-
 import usePollRealtime from "@/hooks/usePollRealtime";
-
 import AnalyticsStatCard from "@/components/charts/AnalyticsStatCard";
-
 import QuestionAnalyticsCard from "@/components/charts/QuestionAnalyticsCard";
 
 export default function AnalyticsPage() {
      const { pollId } = useParams();
 
-     const [analytics, setAnalytics] =
-          useState(null);
+     const [analytics, setAnalytics] = useState(null);
 
-     const [loading, setLoading] =
-          useState(true);
+     const [loading, setLoading] = useState(true);
 
-     const fetchAnalytics =
-          useCallback(async () => {
+     // fetch analytics
+     const fetchAnalytics = useCallback(async () => {
                try {
-                    const response =
-                         await getPollAnalytics(
-                              pollId
-                         );
+                    const response =await getPollAnalytics(pollId);
 
-                    setAnalytics(
-                         response.data
-                    );
+                    setAnalytics(response.data);
                } catch (error) {
                     console.log(error);
                } finally {
@@ -46,16 +27,11 @@ export default function AnalyticsPage() {
                }
           }, [pollId]);
 
-     useEffect(() => {
-          fetchAnalytics();
-     }, [fetchAnalytics]);
+     useEffect(() => { fetchAnalytics(); }, [fetchAnalytics]);
 
-     usePollRealtime({
-          pollId,
+     usePollRealtime({ pollId, onUpdate: fetchAnalytics, });
 
-          onUpdate: fetchAnalytics,
-     });
-
+     // if loading
      if (loading) {
           return (
                <div className="text-zinc-400">
@@ -64,6 +40,7 @@ export default function AnalyticsPage() {
           );
      }
 
+     // not analytics
      if (!analytics) {
           return (
                <div className="text-red-500">
@@ -107,9 +84,7 @@ export default function AnalyticsPage() {
                     {analytics.questions?.map(
                          (question) => (
                               <QuestionAnalyticsCard
-                                   key={
-                                        question.questionId
-                                   }
+                                   key={question.questionId }
                                    question={question}
                               />
                          )

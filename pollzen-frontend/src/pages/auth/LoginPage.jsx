@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
+
+import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "@/validations/auth.schema";
 import { loginUser, getCurrentUser } from "@/services/auth.service";
 import { useAuthStore } from "@/store/auth.store";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -20,13 +22,8 @@ export default function LoginPage() {
 
      const [loading, setLoading] = useState(false);
 
-     const {
-          register,
-          handleSubmit,
-          formState: { errors },
-     } = useForm({
+     const {register,handleSubmit, formState: { errors }, } = useForm({
           resolver: zodResolver(loginSchema),
-
           defaultValues: {
                email: "",
                password: "",
@@ -44,8 +41,7 @@ export default function LoginPage() {
 
                localStorage.setItem("token", token);
 
-               const meResponse =
-                    await getCurrentUser();
+               const meResponse =await getCurrentUser();
 
                setAuth({
                     user: meResponse.data,

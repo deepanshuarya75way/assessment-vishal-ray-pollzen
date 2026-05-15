@@ -1,15 +1,10 @@
 import { Trash2 } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
-
 import { Button } from "@/components/ui/button";
 
-export default function OptionInput({
-     register,
-     questionIndex,
-     optionIndex,
-     removeOption,
-}) {
+export default function OptionInput({ register, questionIndex, optionIndex, removeOption }) {
+     
      return (
           <div className="flex items-center gap-2">
                <Input

@@ -1,18 +1,8 @@
-export default function PublicQuestionCard({
-     question,
-     answers,
-     setAnswers,
-}) {
-     const handleSelect = (
-          questionId,
-          optionId
-     ) => {
-          const filtered =
-               answers.filter(
-                    (answer) =>
-                         answer.questionId !==
-                         questionId
-               );
+
+// question card
+export default function PublicQuestionCard({question, answers,  setAnswers,}) {
+     const handleSelect = (questionId,optionId) => {
+          const filtered = answers.filter( (answer) => answer.questionId !== questionId);
 
           setAnswers([
                ...filtered,

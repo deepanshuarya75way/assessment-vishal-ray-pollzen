@@ -4,6 +4,7 @@ import cors from "cors";
 import { errorHandler } from "./middleware/error.middleware.js";
 import { notFound } from "./middleware/notFound.middleware.js";
 import { limiter } from "./middleware/rateLimiter.middleware.js"
+import corsOptions from './middleware/cors.middleware.js'
 
 import authRouter from './modules/auth/auth.routes.js'
 import healthRouter from './modules/health/health.routes.js'
@@ -15,10 +16,10 @@ export default function createApp() {
      const app = express();
 
      // Middleware
-     app.use(cors());
+     app.use(cors(corsOptions));
      app.use(express.json({ limit: "16kb" }));
      app.use(express.urlencoded({ extended: true }));
-   //  app.use(limiter); 
+     app.use(limiter); 
 
      
 

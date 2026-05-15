@@ -2,11 +2,7 @@ import { motion } from "framer-motion";
 
 import { Card, CardContent } from "@/components/ui/card";
 
-export default function AnalyticsStatCard({
-     title,
-     value,
-     icon: Icon,
-}) {
+export default function AnalyticsStatCard({ title, value, icon: Icon,}) {
      return (
           <motion.div
                initial={{

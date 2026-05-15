@@ -1,14 +1,8 @@
-import {
-     useEffect,
-     useState,
-} from "react";
-
+import { useEffect, useState,} from "react";
 import { useParams } from "react-router-dom";
 
 import { getPollById } from "@/services/poll.service";
-
 import PollStatusBadge from "@/components/common/PollStatusBadge";
-
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function PollDetailsPage() {
@@ -16,14 +10,12 @@ export default function PollDetailsPage() {
 
      const [poll, setPoll] = useState(null);
 
-     const [loading, setLoading] =
-          useState(true);
+     const [loading, setLoading] = useState(true);
 
      useEffect(() => {
           const fetchPoll = async () => {
                try {
-                    const response =
-                         await getPollById(pollId);
+                    const response = await getPollById(pollId);
 
                     setPoll(response.data);
                } catch (error) {
@@ -65,9 +57,7 @@ export default function PollDetailsPage() {
                          </p>
                     </div>
 
-                    <PollStatusBadge
-                         status={poll.status}
-                    />
+                    <PollStatusBadge status={poll.status} />
                </div>
 
                <div className="space-y-5">
@@ -75,25 +65,20 @@ export default function PollDetailsPage() {
                          (question, index) => (
                               <Card
                                    key={question._id}
-                                   className="border-zinc-800 bg-zinc-900"
-                              >
+                                   className="border-zinc-800 bg-zinc-900">
+                                   
                                    <CardContent className="p-6">
                                         <h2 className="font-semibold">
                                              {index + 1}.{" "}
-                                             {
-                                                  question.questionText
-                                             }
+                                             {   question.questionText }
                                         </h2>
 
                                         <div className="mt-4 space-y-3">
                                              {question.options?.map(
                                                   (option) => (
                                                        <div
-                                                            key={
-                                                                 option._id
-                                                            }
-                                                            className="rounded-xl border border-zinc-800 bg-zinc-950 p-3"
-                                                       >
+                                                            key={option._id}
+                                                            className="rounded-xl border border-zinc-800 bg-zinc-950 p-3" >
                                                             {option.text}
                                                        </div>
                                                   )

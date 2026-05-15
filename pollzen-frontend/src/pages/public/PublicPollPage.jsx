@@ -1,21 +1,10 @@
-import {
-     useEffect,
-     useState,
-} from "react";
-
+import {useEffect,useState,} from "react";
 import { useParams } from "react-router-dom";
-
 import { toast } from "sonner";
 
 import { getPollById } from "@/services/poll.service";
-
-import {
-     submitResponse,
-     checkVoteStatus,
-} from "@/services/response.service";
-
+import { submitResponse, checkVoteStatus,} from "@/services/response.service";
 import PublicQuestionCard from "@/components/forms/PublicQuestionCard";
-
 import { Button } from "@/components/ui/button";
 
 export default function PublicPollPage() {
@@ -23,42 +12,28 @@ export default function PublicPollPage() {
 
      const [poll, setPoll] = useState(null);
 
-     const [loading, setLoading] =
-          useState(true);
+     const [loading, setLoading] = useState(true);
 
-     const [submitting, setSubmitting] =
-          useState(false);
+     const [submitting, setSubmitting] = useState(false);
 
-     const [alreadyVoted, setAlreadyVoted] =
-          useState(false);
+     const [alreadyVoted, setAlreadyVoted] = useState(false);
 
-     const [answers, setAnswers] =
-          useState([]);
+     const [answers, setAnswers] = useState([]);
 
      useEffect(() => {
           const initializePage = async () => {
                try {
-                    const pollResponse =
-                         await getPollById(pollId);
+                    const pollResponse = await getPollById(pollId);
                    
                     setPoll(pollResponse.data.poll);
 
-                    const anonymousId =
-                         localStorage.getItem(
-                              "anonymousId"
-                         );
+                    const anonymousId = localStorage.getItem( "anonymousId" );
 
                     if (anonymousId) {
-                         const statusResponse =
-                              await checkVoteStatus(
-                                   pollId,
-                                   anonymousId
-                              );
+                         const statusResponse =await checkVoteStatus(pollId,anonymousId  );
 
-                         setAlreadyVoted(
-                              statusResponse.data
-                                   ?.alreadyVoted
-                         );
+                         // already vote
+                         setAlreadyVoted(statusResponse.data?.alreadyVoted );
                     }
                } catch (error) {
                     console.log(error);
@@ -72,22 +47,14 @@ export default function PublicPollPage() {
 
      const validateAnswers = () => {
           const requiredQuestions =
-               poll.questions.filter(
-                    (q) => q.required
-               );
+               poll.questions.filter((q) => q.required );
 
           for (const question of requiredQuestions) {
-               const answered =
-                    answers.some(
-                         (answer) =>
-                              answer.questionId ===
-                              question._id
-                    );
+               const answered = answers.some( (answer) =>
+                      answer.questionId ===question._id);
 
                if (!answered) {
-                    toast.error(
-                         `Please answer: ${question.questionText}`
-                    );
+                    toast.error( `Please answer: ${question.questionText}` );
 
                     return false;
                }
@@ -103,33 +70,16 @@ export default function PublicPollPage() {
                setSubmitting(true);
 
                const anonymousId =
-                    localStorage.getItem(
-                         "anonymousId"
-                    );
+                    localStorage.getItem("anonymousId" );
 
                const response =
-                    await submitResponse(
-                         pollId,
-                         {
-                              anonymousId,
+                    await submitResponse( pollId,{  anonymousId,  answers, });
 
-                              answers,
-                         }
-                    );
-
-               if (
-                    response.data?.anonymousId
-               ) {
-                    localStorage.setItem(
-                         "anonymousId",
-                         response.data
-                              .anonymousId
-                    );
+               if ( response.data?.anonymousId) {
+                    localStorage.setItem("anonymousId",response.data.anonymousId  );
                }
 
-               toast.success(
-                    "Response submitted successfully"
-               );
+               toast.success( "Response submitted successfully");
 
                setAlreadyVoted(true);
           } catch (error) {

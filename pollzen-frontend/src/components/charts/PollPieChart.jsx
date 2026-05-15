@@ -1,22 +1,8 @@
-import {
-     PieChart,
-     Pie,
-     Cell,
-     ResponsiveContainer,
-     Tooltip,
-} from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip} from "recharts";
 
-const COLORS = [
-     "#6366F1",
-     "#8B5CF6",
-     "#06B6D4",
-     "#10B981",
-     "#F59E0B",
-];
+const COLORS = ["#6366F1","#8B5CF6", "#06B6D4", "#10B981", "#F59E0B",];
 
-export default function PollPieChart({
-     data,
-}) {
+export default function PollPieChart({data,}) {
      return (
           <div className="h-80">
                <ResponsiveContainer

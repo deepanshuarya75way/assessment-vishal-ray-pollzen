@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { dashboardNavigation } from "@/constants/navigation";
 
+import { dashboardNavigation } from "@/constants/navigation";
 import { cn } from "@/lib/utils";
 
 export default function AppSidebar() {

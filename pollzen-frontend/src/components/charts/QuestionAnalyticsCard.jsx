@@ -1,12 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 
 import PollPieChart from "./PollPieChart";
-
 import PollBarChart from "./PollBarChart";
 
-export default function QuestionAnalyticsCard({
-     question,
-}) {
+export default function QuestionAnalyticsCard({ question}) {
      return (
           <Card className="border-zinc-800 bg-zinc-900">
                <CardContent className="p-6 space-y-8">
