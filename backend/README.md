@@ -255,6 +255,3 @@ Recommended:
 # License
 
 MIT License
-
-```
-```
