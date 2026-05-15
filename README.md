@@ -8,7 +8,7 @@
 https://pollzen.rayvishal.dev
 
 ### Backend API
-https://pollzen-api.onrender.com
+https://pollzen.onrender.com
 
 ---
 
