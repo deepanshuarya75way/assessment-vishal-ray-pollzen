@@ -1,15 +1,15 @@
-import mongoose from "mongoose"
+import mongoose from 'mongoose';
 
-const AnalyticsSchema = new mongoose.Schema({
+const { Schema } = mongoose;
 
-     pollId: ObjectId,
+const AnalyticsSchema = new Schema({
+  pollId: Schema.Types.ObjectId,
 
-     questionId: ObjectId,
+  questionId: Schema.Types.ObjectId,
 
-     optionId: ObjectId,
+  optionId: Schema.Types.ObjectId,
 
-     count: Number
-
-})
+  count: Number,
+});
 
 export const Analytic = mongoose.model('Analytic', AnalyticsSchema);

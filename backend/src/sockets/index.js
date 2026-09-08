@@ -1,21 +1,16 @@
-import { registerPollSocket } from "./poll.socket.js";
+import { registerPollSocket } from './poll.socket.js';
+
+import logger from '../utils/logger.js';
 
 export const initializeSocket = (io) => {
+  io.on('connection', (socket) => {
+    logger.debug({ socketId: socket.id }, 'Socket connected');
 
-     io.on("connection", (socket) => {
+    // Register poll events
+    registerPollSocket(io, socket);
 
-          console.log(
-               `Socket connected: ${socket.id}`
-          );
-
-          // Register poll events
-          registerPollSocket(io, socket);
-
-          socket.on("disconnect", () => {
-
-               console.log(
-                    `Socket disconnected: ${socket.id}`
-               );
-          });
-     });
+    socket.on('disconnect', () => {
+      logger.debug({ socketId: socket.id }, 'Socket disconnected');
+    });
+  });
 };

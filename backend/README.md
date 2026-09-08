@@ -244,9 +244,6 @@ Frontend Refetch Analytics
 
 # Deployment
 
-Recommended:
-
-* Railway
 * Render
 * MongoDB Atlas
 
@@ -255,3 +252,41 @@ Recommended:
 # License
 
 MIT License
+ 
+---
+
+## Quick Start (backend only)
+
+1. Copy `.env.example` to `.env` and set values (see notes below).
+
+2. Install dependencies:
+
+```bash
+pnpm install
+```
+
+3. Run in development:
+
+```bash
+pnpm run dev
+```
+
+4. Run in production:
+
+```bash
+pnpm run start:prod
+```
+
+Notes
+- `MONGO_URI`: when unset, the server will skip connecting to MongoDB (helpful for quick frontend/demo work). For a full backend run, set a valid MongoDB URI.
+- `JWT_SECRET`: required for authentication flows.
+- `CLIENT_URL`: add your frontend origin to `ALLOWED_ORIGINS` if using CORS restrictions.
+
+Logger
+- Uses `pino` with `pino-pretty` in development for readable logs. Logs are in `src/utils/logger.js`.
+
+Testing & CI
+- I can add basic API smoke tests using `supertest` and a CI workflow if you want — tell me and I'll add them.
+
+Support
+- I modified some middleware and safety checks to make local development smoother (no automatic process exit on DB errors). If you prefer stricter production behavior (exit on DB connection failure), I can add an environment toggle for that.

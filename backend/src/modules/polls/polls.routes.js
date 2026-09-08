@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import * as PollController from './polls.controller.js';
 import { createPollSchema } from './polls.validation.js';
-import  validate from '../../middleware/validate.middleware.js';
-import { isloggedin} from '../../middleware/auth.middleware.js';     
+import validate from '../../middleware/validate.middleware.js';
+import { isloggedin } from '../../middleware/auth.middleware.js';
 
 const router = Router();
 
@@ -26,6 +26,5 @@ router.patch('/:pollId/publish', isloggedin, PollController.publishPoll);
 
 // PATCH /:pollId/close
 router.patch('/:pollId/close', isloggedin, PollController.closePoll);
-
 
 export default router;
