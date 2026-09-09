@@ -146,9 +146,9 @@ License
 # Frontend Setup
 
 ```bash
-cd client
-npm install
-npm run dev
+cd frontend
+pnpm install
+pnpm dev
 ```
 
 Frontend runs on:
@@ -162,9 +162,9 @@ http://localhost:5173
 # Backend Setup
 
 ```bash
-cd server
-npm install
-npm run dev
+cd backend
+pnpm install
+pnpm run dev
 ```
 
 Backend runs on:
