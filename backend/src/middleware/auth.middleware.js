@@ -37,12 +37,21 @@ const isloggedin = async (req, res, next) => {
 };
 
 // Optional Auth
+// Treat common bogus token values ('null', 'undefined', empty) as no auth header
 const optionalAuthenticate = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (authHeader && authHeader.startsWith('Bearer ')) {
+    const token = authHeader.split(' ')[1];
+
+    // If token is missing or a literal 'null'/'undefined', skip authentication
+    if (!token || token === 'null' || token === 'undefined') {
+      return next();
+    }
+
     return isloggedin(req, res, next);
   }
+
   next();
 };
 

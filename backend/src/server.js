@@ -20,7 +20,7 @@ async function main() {
     const io = initSocket(server);
 
     // PORT
-    const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT || 6000;
 
     // connect DB
     await connectDB();

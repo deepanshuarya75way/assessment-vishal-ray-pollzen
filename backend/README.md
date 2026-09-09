@@ -148,7 +148,7 @@ CLIENT_URL=http://localhost:5173
 # Installation
 
 ```bash
-npm install
+pnpm install
 ```
 
 ---
@@ -156,7 +156,7 @@ npm install
 # Development
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ---
@@ -164,7 +164,7 @@ npm run dev
 # Production
 
 ```bash
-npm start
+pnpm start
 ```
 
 ---
