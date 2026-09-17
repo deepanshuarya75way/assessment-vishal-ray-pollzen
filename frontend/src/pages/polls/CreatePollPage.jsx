@@ -18,6 +18,8 @@ import { Popover,  PopoverContent,  PopoverTrigger} from "@/components/ui/popove
 import { Calendar } from "@/components/ui/calendar";
 import {Dialog, DialogContent, DialogHeader, DialogTitle} from "@/components/ui/dialog";
 
+import { PublicPollPage } from "@/pages/public/PublicPollPage";
+
 // create poll
 export default function CreatePollPage() {
 
@@ -248,6 +250,7 @@ export default function CreatePollPage() {
 
                               </div>
 
+
                               <div className="flex gap-3">
 
                                    <Button
@@ -278,6 +281,66 @@ export default function CreatePollPage() {
                                    >
                                         Open Poll
                                    </Button>
+
+                              </div>
+
+                         </div>
+
+                    </DialogContent>
+               </Dialog>
+
+              <Dialog
+                    open={showShareModal}
+                    onOpenChange={setShowShareModal}
+               >
+                    <DialogContent className="sm:max-w-md">
+
+                         <DialogHeader>
+
+                              <DialogTitle>
+                                   Poll Created Successfully
+                              </DialogTitle>
+
+                         </DialogHeader>
+
+                         <div className="space-y-6">
+
+                              <div className="flex justify-center rounded-2xl bg-white p-6">
+
+                           {/* just paste text so creater copy code and paste into own application page after create poll  */}
+                                   <iframe url="">
+                                          <PublicPollPage/>
+                                   </iframe>
+
+                              </div>
+
+                              <div className="space-y-2">
+
+                                   <p className="text-sm text-muted-foreground">Integrate this in your application</p>
+
+                                   <div className="overflow-hidden rounded-xl border p-3 text-sm break-all bg-card text-card-foreground">{shareUrl}</div>
+
+                              </div>
+
+
+                              <div className="flex gap-3">
+
+                                   <Button
+                                        className="flex-1"
+                                        onClick={() => {
+
+                                             navigator.clipboard.writeText(
+                                                  shareUrl
+                                             );
+
+                                             toast.success(
+                                                  "Link copied"
+                                             );
+                                        }}
+                                   >
+                                        Copy Link
+                                   </Button>
+
 
                               </div>
 
